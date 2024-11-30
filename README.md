@@ -1,1 +1,2 @@
-# DSA210_Term_Project_Ali_Devrim
+Analysis of Physical Activity, Weather and Social Media Usage
+
