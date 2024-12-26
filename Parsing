@@ -1,0 +1,7 @@
+İlk olarak apple health'ten çektiğim verilerden (dışa aktarılan) projede kullanmayacağım kısımları çıkarttım (Günlük_Adım_Sayısı).
+"Sorunlu Karakterleri Düzeltme.0" ile özel karakterleri düzelttim such as ("iPhone’u", "iPhone").replace("‘", "'").replace("’", "'"), "Günlük_Adım_Sayısı_Updated_Fixed" olarak kaydettim.
+"Sorunlu Karakterleri Düzeltme.1" ile kalan sorunlu karakterler ile tekrar düzelttim ve "Günlük_Adım_Sayısı_Cleaned" olarak kaydettim.
+Hala hata verdiği için "Düzeltme.2" ile daha detaylı bir karakter temizliği ve düzeltmesi yaptım. "Günlük_Adım_Sayısı_Fixed" olarak kaydettim.
+"Temizlik.3" ile ">" ve "<" sembollerini düzelttim ve "Günlük_Adım_Sayısı_Final" olarak kaydettim.
+"Temizlik.4" ile eksik kapanış etiketi olup olmadığını kontrol ettim. "Günlük_Adım_Sayısı_Corrected" olarak kaydettim.
+"Günlük Adım Liste" ile pars edilmiş verilerden günlük adım listemi oluşturdum ve "daily_steps_counted" isimli notepade yazdırdım.
