@@ -1,3 +1,5 @@
+##Below is the code written to create a graph that shows daily humidity percentage and wind speed in addition to temperature information.##
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
