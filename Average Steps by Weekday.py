@@ -1,4 +1,4 @@
-Table showing the distribution of my step counts over the days and which days are below average and which days are above:
+##Table showing the distribution of my step counts over the days and which days are below average and which days are above:##
 
 import matplotlib.pyplot as plt
 import datetime
