@@ -1,5 +1,9 @@
-İlk olarak apple health'ten günlük adım sayısı verilerimi çektim, "Günlük Adım Sayısı" isimli XML dosyasından görebilirsiniz. Topladığım data geçtiğimiz beş senenin verilerini içeriyordu. Benim analiz edeceğim tarih 11 Kasımdan günümüze kadar olacağı için ihtiyacım olmayan tarihleri eledim. Sadece kullanacağım verilerin olduğu Günlük_Adım_Sayısı_Updated adında yeni bir XML dosyası oluşturdum.
-Kod ilk başta çeşitli sebeplerden dolayı hata verdiği için farklı düzeltme yolları denedim, ilk olarak "Fixing Problematic Characters.0" ile özel karakterleri düzelttim, ilk düzeltmeden sonra elde ettiğim datayı "Günlük_Adım_Sayısı_Updated_Fixed" olarak kaydettim.
+Firstly, I pulled my daily step count data from Apple Health. Raw data can be found from the XML file with the name "Günlük Adım Sayısı" The raw-data I gathered was
+including last five year's data. Since the date range I will analyze is from November 11th to the present, I eliminated the dates I do not need. I created a new XML file
+called Günlük_Adım_Sayısı_Updated that contains only the data I will be using.
+
+I tried different fixes because the code was giving errors at first for various reasons. First, I fixed the special characters with "Fixing Problematic Characters.0", 
+and saved the data I obtained after the first correction as "Günlük_Adım_Sayısı_Updated_Fixed".
 
 file_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Updated.xml"
 # Read file and process it as text
@@ -13,7 +17,8 @@ with open(fixed_file_path, "w", encoding="utf-8") as file:
     file.write(xml_content_fixed)
 print("The XML file was successfully corrected and saved to the new file.")
 
-**Kod hala hata vermeye devam ettiği için daha detaylı bir temizlik yapmak amacıyla "Sorunlu Karakterleri Düzeltme.1" python koduyla tekrardan düzenlemeler yaptım. Elde ettiğim verileri "Günlük_Adım_Sayısı_Cleaned" adında bir xml dosyasına kaydettim.**
+**Since the code was still giving errors, I made some more detailed cleaning by editing it with the Python code "Sorunlu Karakterleri Düzeltme.1". I saved the data
+I obtained to an XML file named "Günlük_Adım_Sayısı_Cleaned".
 
 # To fix bad characters and clean the file
 file_path = "Günlük_Adım_Sayısı_Updated_Fixed.xml"  # The file path to edit
@@ -36,7 +41,7 @@ with open(output_path, "w", encoding="utf-8") as file:
     file.write(xml_content_cleaned)
 print(f"Cleaned file saved successfully: {output_path}")
 
-**Hala hata verdiği için "Düzeltme.2" ile daha detaylı bir karakter temizliği ve düzeltmesi yaptım. "Günlük_Adım_Sayısı_Fixed" olarak kaydettim.**
+**Since it was still giving me an error, I did a more detailed character cleaning and correction with "Düzeltme.2". I saved it as "Günlük_Adım_Sayısı_Fixed".**
 
 file_path = "Günlük_Adım_Sayısı_Cleaned.xml"  # Mevcut XML dosyasının yolu
 output_path = "Günlük_Adım_Sayısı_Fixed.xml"  # Düzeltilmiş dosyanın kaydedileceği yol
@@ -87,11 +92,11 @@ with open(output_path, "w", encoding="utf-8") as file:
     file.write(xml_content_fixed)
 print(f"Corrected XML file saved: {output_path}")
 
-**"Temizlik.4" ile eksik kapanış etiketi olup olmadığını kontrol ettim. "Günlük_Adım_Sayısı_Corrected" olarak kaydettim.**
+**"I checked for any missing closing tags with "Temizlik.4". I saved it as "Günlük_Adım_Sayısı_Corrected".**
 
-file_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Final.xml"  # Orijinal dosya yolu
-output_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Corrected.xml"  # Düzeltilmiş dosya yolu
-# Reading the oroginal file
+file_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Final.xml"  # Original file path
+output_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Corrected.xml"  # Fixed file path
+# Reading the original file
 with open(file_path, "r", encoding="utf-8") as file:
     content = file.read()
 # Check for missing closing tags and add them
