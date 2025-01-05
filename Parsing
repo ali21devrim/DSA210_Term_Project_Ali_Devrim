@@ -2,8 +2,8 @@ Firstly, I pulled my daily step count data from Apple Health. Raw data can be fo
 including last five year's data. Since the date range I will analyze is from November 11th to the present, I eliminated the dates I do not need. I created a new XML file
 called Günlük_Adım_Sayısı_Updated that contains only the data I will be using.
 
-I tried different fixes because the code was giving errors at first for various reasons. First, I fixed the special characters with "Fixing Problematic Characters.0", 
-and saved the data I obtained after the first correction as "Günlük_Adım_Sayısı_Updated_Fixed".
+###I tried different fixes because the code was giving errors at first for various reasons. First, I fixed the special characters with "Fixing Problematic Characters.0", 
+and saved the data I obtained after the first correction as "Günlük_Adım_Sayısı_Updated_Fixed".###
 
 file_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Updated.xml"
 # Read file and process it as text
