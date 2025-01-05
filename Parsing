@@ -1,4 +1,5 @@
-İlk olarak apple health'ten çektiğim verilerden (dışa aktarılan) projede kullanmayacağım kısımları çıkarttım (Günlük_Adım_Sayısı).
+İlk olarak apple health'ten günlük adım sayısı verilerimi çektim. Topladığım data geçtiğimiz beş senenin verilerini içeriyordu. Benim analiz edeceğim tarih 11 Kasımdan günümüzekadar olacağı için ihtiyacım olmayan tarihleri eledim. projede kullanmayacağım kısımları çıkarttım (Günlük_Adım_Sayısı).
+
 "Sorunlu Karakterleri Düzeltme.0" ile özel karakterleri düzelttim such as ("iPhone’u", "iPhone").replace("‘", "'").replace("’", "'"), "Günlük_Adım_Sayısı_Updated_Fixed" olarak kaydettim.
 "Sorunlu Karakterleri Düzeltme.1" ile kalan sorunlu karakterler ile tekrar düzelttim ve "Günlük_Adım_Sayısı_Cleaned" olarak kaydettim.
 Hala hata verdiği için "Düzeltme.2" ile daha detaylı bir karakter temizliği ve düzeltmesi yaptım. "Günlük_Adım_Sayısı_Fixed" olarak kaydettim.
