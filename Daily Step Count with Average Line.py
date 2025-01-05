@@ -1,3 +1,5 @@
+##**Here is the code for the line chart that shows how many steps I take per day:**##
+
 import matplotlib.pyplot as plt
 
 # Güncellenmiş dosya yolu
