@@ -1,8 +1,105 @@
-İlk olarak apple health'ten günlük adım sayısı verilerimi çektim. Topladığım data geçtiğimiz beş senenin verilerini içeriyordu. Benim analiz edeceğim tarih 11 Kasımdan günümüzekadar olacağı için ihtiyacım olmayan tarihleri eledim. projede kullanmayacağım kısımları çıkarttım (Günlük_Adım_Sayısı).
+İlk olarak apple health'ten günlük adım sayısı verilerimi çektim, "Günlük Adım Sayısı" isimli XML dosyasından görebilirsiniz. Topladığım data geçtiğimiz beş senenin verilerini içeriyordu. Benim analiz edeceğim tarih 11 Kasımdan günümüze kadar olacağı için ihtiyacım olmayan tarihleri eledim. Sadece kullanacağım verilerin olduğu Günlük_Adım_Sayısı_Updated adında yeni bir XML dosyası oluşturdum.
+Kod ilk başta çeşitli sebeplerden dolayı hata verdiği için farklı düzeltme yolları denedim, ilk olarak "Fixing Problematic Characters.0" ile özel karakterleri düzelttim, ilk düzeltmeden sonra elde ettiğim datayı "Günlük_Adım_Sayısı_Updated_Fixed" olarak kaydettim.
 
-"Sorunlu Karakterleri Düzeltme.0" ile özel karakterleri düzelttim such as ("iPhone’u", "iPhone").replace("‘", "'").replace("’", "'"), "Günlük_Adım_Sayısı_Updated_Fixed" olarak kaydettim.
-"Sorunlu Karakterleri Düzeltme.1" ile kalan sorunlu karakterler ile tekrar düzelttim ve "Günlük_Adım_Sayısı_Cleaned" olarak kaydettim.
-Hala hata verdiği için "Düzeltme.2" ile daha detaylı bir karakter temizliği ve düzeltmesi yaptım. "Günlük_Adım_Sayısı_Fixed" olarak kaydettim.
-"Temizlik.3" ile ">" ve "<" sembollerini düzelttim ve "Günlük_Adım_Sayısı_Final" olarak kaydettim.
-"Temizlik.4" ile eksik kapanış etiketi olup olmadığını kontrol ettim. "Günlük_Adım_Sayısı_Corrected" olarak kaydettim.
+file_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Updated.xml"
+# Read file and process it as text
+with open(file_path, "r", encoding="utf-8") as file:
+    xml_content = file.read()
+# Autocorrectting special characters
+xml_content_fixed = xml_content.replace("iPhone’u", "iPhone").replace("‘", "'").replace("’", "'")
+# Save corrections to a new file
+fixed_file_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Updated_Fixed.xml"
+with open(fixed_file_path, "w", encoding="utf-8") as file:
+    file.write(xml_content_fixed)
+print("The XML file was successfully corrected and saved to the new file.")
+
+**Kod hala hata vermeye devam ettiği için daha detaylı bir temizlik yapmak amacıyla "Sorunlu Karakterleri Düzeltme.1" python koduyla tekrardan düzenlemeler yaptım. Elde ettiğim verileri "Günlük_Adım_Sayısı_Cleaned" adında bir xml dosyasına kaydettim.**
+
+# To fix bad characters and clean the file
+file_path = "Günlük_Adım_Sayısı_Updated_Fixed.xml"  # The file path to edit
+output_path = "Günlük_Adım_Sayısı_Cleaned.xml"      # Path to save clean file
+# Read the file
+with open(file_path, "r", encoding="utf-8") as file:
+    xml_content = file.read()
+# Correct or remove problematic characters
+xml_content_cleaned = (
+    xml_content
+    .replace("‘", "'")  # Açık tırnak
+    .replace("’", "'")  # Kapalı tırnak
+    .replace("“", '"')  # Çift açık tırnak
+    .replace("”", '"')  # Çift kapalı tırnak
+    .replace("iPhone’u", "iPhone")  # Özel örnek
+    .replace("&", "&amp;")  # Geçersiz & sembollerini düzelt
+)
+# Saving the cleaned file
+with open(output_path, "w", encoding="utf-8") as file:
+    file.write(xml_content_cleaned)
+print(f"Cleaned file saved successfully: {output_path}")
+
+**Hala hata verdiği için "Düzeltme.2" ile daha detaylı bir karakter temizliği ve düzeltmesi yaptım. "Günlük_Adım_Sayısı_Fixed" olarak kaydettim.**
+
+file_path = "Günlük_Adım_Sayısı_Cleaned.xml"  # Mevcut XML dosyasının yolu
+output_path = "Günlük_Adım_Sayısı_Fixed.xml"  # Düzeltilmiş dosyanın kaydedileceği yol
+
+# Reading the file
+with open(file_path, "r", encoding="utf-8") as file:
+    xml_content = file.read()
+
+# Identify and correct problematic characters
+fixes = {
+    "&": "&amp;",      # Geçersiz & sembolü
+    "<": "&lt;",       # Geçersiz < sembolü
+    ">": "&gt;",       # Geçersiz > sembolü
+    "'": "&apos;",     # Tek tırnak
+    '"': "&quot;",     # Çift tırnak
+    "‘": "'",          # Akıllı tırnaklar
+    "’": "'",          # Akıllı tırnaklar
+    "“": '"',          # Çift akıllı tırnak
+    "”": '"',          # Çift akıllı tırnak
+    "ü": "u",          # Türkçe 'ü'
+    "ö": "o",          # Türkçe 'ö'
+    "ç": "c",          # Türkçe 'ç'
+    "ş": "s",          # Türkçe 'ş'
+    "ğ": "g",          # Türkçe 'ğ'
+    "İ": "I",          # Türkçe 'İ'
+    "ı": "i"           # Türkçe 'ı'
+}
+# Replacing problematic characters
+for key, value in fixes.items():
+    xml_content = xml_content.replace(key, value)
+# Saving the corrected file
+with open(output_path, "w", encoding="utf-8") as file:
+    file.write(xml_content)
+print(f"XML file successfully edited and saved: {output_path}")
+
+With "Temizlik.3" I fixed the symbols like, ">" ve "<" and saved it into the file "Günlük_Adım_Sayısı_Final".
+
+file_path = "Günlük_Adım_Sayısı_Cleaned.xml"  # Original XML file path
+output_path = "Günlük_Adım_Sayısı_Final.xml"  # Path to save corrected file
+# Read the file
+with open(file_path, "r", encoding="utf-8") as file:
+    xml_content = file.read()
+# Fix broken "<" and ">"` symbols
+# Invalid strings are converted to escape strings
+xml_content_fixed = xml_content.replace("<<", "&lt;").replace(">>", "&gt;")
+# Save the cleaned file
+with open(output_path, "w", encoding="utf-8") as file:
+    file.write(xml_content_fixed)
+print(f"Corrected XML file saved: {output_path}")
+
+**"Temizlik.4" ile eksik kapanış etiketi olup olmadığını kontrol ettim. "Günlük_Adım_Sayısı_Corrected" olarak kaydettim.**
+
+file_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Final.xml"  # Orijinal dosya yolu
+output_path = "C:\\Users\\alide\\OneDrive - sabanciuniv.edu\\Masaüstü\\Günlük_Adım_Sayısı_Corrected.xml"  # Düzeltilmiş dosya yolu
+# Reading the oroginal file
+with open(file_path, "r", encoding="utf-8") as file:
+    content = file.read()
+# Check for missing closing tags and add them
+if not content.strip().endswith("</HealthData>"):
+    content = content.strip() + "\n</HealthData>"
+# Write corrected content to new file
+with open(output_path, "w", encoding="utf-8") as file:
+    file.write(content)
+print(f"Corrected file saved successfully: {output_path}")
+
 "Günlük Adım Liste" ile pars edilmiş verilerden günlük adım listemi oluşturdum ve "daily_steps_counted" isimli notepade yazdırdım.
