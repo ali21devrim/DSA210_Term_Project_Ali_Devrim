@@ -1,3 +1,5 @@
+##The code I wrote to determine which time intervals are most active.##
+    
 import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
 from datetime import datetime
