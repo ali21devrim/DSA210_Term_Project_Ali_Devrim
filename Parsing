@@ -102,4 +102,6 @@ with open(output_path, "w", encoding="utf-8") as file:
     file.write(content)
 print(f"Corrected file saved successfully: {output_path}")
 
-"Günlük Adım Liste" ile pars edilmiş verilerden günlük adım listemi oluşturdum ve "daily_steps_counted" isimli notepade yazdırdım.
+With the named "Günlük Adım Liste" python code There were multiple and scattered data for a day. After parsing the raw data, I collected the separate daily data and created
+my daily step list. Then I created a nnotepade "daily_steps_counted" to save the number of daily steps.
+
