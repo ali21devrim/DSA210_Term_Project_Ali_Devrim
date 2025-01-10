@@ -2,12 +2,12 @@ import pandas as pd
 from scipy.stats import ttest_ind, normaltest, mannwhitneyu
 
 def test_temperature_steps_relationship(weather_file_path, steps_file_path):
-    # Hava durumu verilerini okuma
+    # Reading weather data
     weather_data = pd.read_excel(weather_file_path)
     weather_data['Date'] = pd.to_datetime(weather_data['Date'])
     weather_data['Temperature'] = weather_data['Temperature'].str.replace('°C', '').astype(float)
 
-    # Adım sayısı verilerini okuma
+    # Reading step count data
     steps_data = []
     with open(steps_file_path, "r") as file:
         for line in file:
@@ -19,19 +19,19 @@ def test_temperature_steps_relationship(weather_file_path, steps_file_path):
 
     steps_df = pd.DataFrame(steps_data)
 
-    # Hava durumu ve adım sayısı verilerini birleştirme
+    # Combining weather and step count data
     merged_data = pd.merge(steps_df, weather_data, on='Date', how='inner')
 
-    # Verilerin gruplandırılması
+    # Grouping of data
     steps_above_11 = merged_data[merged_data['Temperature'] > 11]['Steps']
     steps_below_or_equal_11 = merged_data[merged_data['Temperature'] <= 11]['Steps']
 
-    # Hipotezler
+    # Hypotheses
     print("\nHipotezler:")
     print("H0: Hava sıcaklığı 11°C üzeri olduğunda günlük ortalama adım sayısı genel ortalamadan farklı değildir.")
     print("HA: Hava sıcaklığı 11°C üzeri olduğunda günlük ortalama adım sayısı genel ortalamadan farklıdır.")
 
-    # Verilerin normal dağılıma uygunluğunu kontrol etme
+    # Checking whether the data are normally distributed
     normal_above = normaltest(steps_above_11).pvalue
     normal_below = normaltest(steps_below_or_equal_11).pvalue
 
@@ -39,7 +39,7 @@ def test_temperature_steps_relationship(weather_file_path, steps_file_path):
     print(f"Hava sıcaklığı 11°C üzeri: p-value = {normal_above:.4f}")
     print(f"Hava sıcaklığı 11°C ve altı: p-value = {normal_below:.4f}")
 
-    # Uygun testin seçimi
+    # Selection of appropriate test
     if normal_above > 0.05 and normal_below > 0.05:
         # Bağımsız örnekleme t-testi
         test_result = ttest_ind(steps_above_11, steps_below_or_equal_11)
@@ -49,21 +49,21 @@ def test_temperature_steps_relationship(weather_file_path, steps_file_path):
         test_result = mannwhitneyu(steps_above_11, steps_below_or_equal_11, alternative='two-sided')
         test_name = "Mann-Whitney U Testi"
 
-    # Sonuçları yazdırma
+    # Print results
     print(f"\n{test_name} Sonuçları:")
     print(f"Test İstatistiği: {test_result.statistic:.4f}")
     print(f"p-value: {test_result.pvalue:.4f}")
 
-    # Hipotez testi kararı
+    # Hypothesis testing decision
     threshold = 0.05
     if test_result.pvalue < threshold:
         print("\nSonuç: H0 reddedilir. Hava sıcaklığı 11°C üzeri olduğunda günlük ortalama adım sayısı genel ortalamadan farklıdır.")
     else:
         print("\nSonuç: H0 reddedilemez. Hava sıcaklığı 11°C üzeri olduğunda günlük ortalama adım sayısı genel ortalamadan farklı değildir.")
 
-# Dosya yolları
+# File paths
 weather_file_path = r"C:\Users\alide\OneDrive - sabanciuniv.edu\Masaüstü\Hava Durumu Dataları.xlsx"
 steps_file_path = r"C:\Users\alide\OneDrive - sabanciuniv.edu\Masaüstü\daily_steps_output.txt"
 
-# Fonksiyonu çalıştır
+# Run the function
 test_temperature_steps_relationship(weather_file_path, steps_file_path)
