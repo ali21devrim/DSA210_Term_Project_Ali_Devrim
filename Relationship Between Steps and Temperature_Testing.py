@@ -1,3 +1,6 @@
+#I applied a t-test to see if there is a relationship between the air temperature and the number of steps taken per day, or if this relationship even has anything to do with
+#11 degrees as it is concentrated in the graph. I wrote this code to apply the t-test.
+
 import pandas as pd
 from scipy.stats import ttest_ind, normaltest, mannwhitneyu
 
