@@ -1,0 +1,16 @@
+# Daily Step Count and Social Media Usage Relationship Test
+As a result of the hypothesis test I conducted to test my hypothesis that there is a negative relationship between the time spent on social media and the number of steps taken
+per day, it was determined that there is indeed a relationship between social media use and the number of steps taken per day.
+The test result is shown in more detail as follows:
+
+Hypotheses:
+H0: Step count increase does not significantly reduce social media usage.
+HA: Step count increase significantly reduces social media usage.
+
+Hypothesis Testing Results:
+Spearman Correlation Coefficient: -0.3190
+P-Value: 0.0327
+
+Conclusion:
+Reject the null hypothesis (H0): There is a significant relationship between step
+count and social media usage.
