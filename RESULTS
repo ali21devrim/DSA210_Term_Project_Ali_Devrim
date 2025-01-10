@@ -33,3 +33,23 @@ Test Statistics: -1.0055
 p-value: 0.3202
 
 Result: H0 cannot be rejected. When the air temperature is above 11°C, the daily average step count is not different from the general average.
+
+Weather and Daily Step Count Relationship Test
+
+ANOVA Test Result:
+F-statistic: 0.5276
+p-value: 0.5938
+
+Hypotheses:
+H0: Weather has no effect on the number of steps.
+HA: Weather has an effect on the number of steps.
+
+Result: H0 cannot be rejected. Weather has no significant effect on the number of steps.
+
+
+#GENERAL CONCLUSION
+When we look at the results of the three tests I applied, I see that the predictions I made at the beginning of the project were incomplete or incorrect at some points,
+although not completely. While my prediction that there was a negative relationship between social media use and physical activity was correct, I learned that I had 
+incorrectly predicted that weather conditions had a significant effect on physical activity. As a result, I think that both the issues I was right and wrong about have
+positive data. Because these tests showed me that I did not need a condition like the weather to do physical activity. At the same time, I saw that when I increased my 
+physical activity, my social media use decreased, meaning that physical activity was really beneficial.
