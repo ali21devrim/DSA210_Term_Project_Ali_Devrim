@@ -1,5 +1,5 @@
 #This code was written after it was determined that the air temperature had no effect on the daily step count. Its purpose was to understand whether the weather had an effect.
-#In other words, whether the weather was cloudy, sunny or rainy, this question was tested with an ANOVA test.
+#In other words, whether the weather was cloudy, sunny or rainy, this question was tested with an ANOVA test. The results are detailed in the RESULTS file.
 
 import pandas as pd
 from scipy.stats import f_oneway
