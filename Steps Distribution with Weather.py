@@ -1,15 +1,19 @@
+#This code evaluated the daily step count according to the weather conditions rather than the air temperature. For this purpose, three types of weather conditions experienced
+#in autumn (clear, partly cloudy and rain) were considered. Candlestick charts were created to determine the distribution of the number of steps taken in these weather
+#conditions.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Hava durumu ve adım sayıları dosyalarının yolları
+# Paths to weather and step count files
 weather_file_path = r"C:\Users\alide\OneDrive - sabanciuniv.edu\Masaüstü\Hava Durumu Dataları.xlsx"
 steps_file_path = r"C:\Users\alide\OneDrive - sabanciuniv.edu\Masaüstü\daily_steps_output.txt"
 
-# Hava durumu verilerini okuma
+# Reading weather data
 weather_data = pd.read_excel(weather_file_path)
 weather_data['Date'] = pd.to_datetime(weather_data['Date'])
 
-# Adım sayısı verilerini okuma
+# Reading step count data
 steps_data = []
 with open(steps_file_path, "r") as file:
     for line in file:
@@ -21,26 +25,26 @@ with open(steps_file_path, "r") as file:
 
 steps_df = pd.DataFrame(steps_data)
 
-# Hava durumu ve adım sayısı verilerini birleştirme
+# Combining weather and step count data
 merged_data = pd.merge(steps_df, weather_data, on='Date')
 
-# Medyan değerlerini hesaplama
+# Calculating median values
 median_values = merged_data.groupby('Weather')['Steps'].median()
 
-# Hava durumu türlerine göre adım sayısı dağılımını görselleştirme
+# Visualize step count distribution by weather types
 plt.figure(figsize=(12, 6))
 merged_data.boxplot(column='Steps', by='Weather', grid=False, patch_artist=True,
                     boxprops=dict(facecolor='lightblue', color='blue'))
 
-# Ortalama çizgisi ekleme
+# Adding an average line
 plt.axhline(y=10917, color='red', linestyle='--', label='Overall Average')
 
-# Medyan değerlerini gösterme
+# Showing median values
 for i, weather in enumerate(median_values.index, start=1):
     plt.text(i, median_values[weather], f"{median_values[weather]:.0f}",
              horizontalalignment='center', color='black', fontsize=10)
 
-# Grafik etiketleri ve başlık
+# Chart labels and title
 plt.title("Steps Distribution by Weather", fontsize=16)
 plt.suptitle("")  # Otomatik üst başlığı kaldırır
 plt.xlabel("Weather Type", fontsize=12)
@@ -48,6 +52,6 @@ plt.ylabel("Steps", fontsize=12)
 plt.xticks(rotation=45, fontsize=10)
 plt.legend()
 
-# Grafik düzenlemesi
+# Graphics editing
 plt.tight_layout()
 plt.show()
