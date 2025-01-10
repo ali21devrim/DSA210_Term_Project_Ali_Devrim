@@ -1,6 +1,6 @@
-Firstly, I pulled my daily step count data from Apple Health. Raw data can be found from the XML file with the name "Günlük Adım Sayısı" The raw-data I gathered was
+**Firstly, I pulled my daily step count data from Apple Health. Raw data can be found from the XML file with the name "Günlük Adım Sayısı" The raw-data I gathered was
 including last five year's data. Since the date range I will analyze is from November 11th to the present, I eliminated the dates I do not need. I created a new XML file
-called Günlük_Adım_Sayısı_Updated that contains only the data I will be using.
+called Günlük_Adım_Sayısı_Updated that contains only the data I will be using.**
 
 ###I tried different fixes because the code was giving errors at first for various reasons. First, I fixed the special characters with "Fixing Problematic Characters.0", 
 and saved the data I obtained after the first correction as "Günlük_Adım_Sayısı_Updated_Fixed".###
@@ -18,7 +18,7 @@ with open(fixed_file_path, "w", encoding="utf-8") as file:
 print("The XML file was successfully corrected and saved to the new file.")
 
 **Since the code was still giving errors, I made some more detailed cleaning by editing it with the Python code "Sorunlu Karakterleri Düzeltme.1". I saved the data
-I obtained to an XML file named "Günlük_Adım_Sayısı_Cleaned".
+I obtained to an XML file named "Günlük_Adım_Sayısı_Cleaned".**
 
 # To fix bad characters and clean the file
 file_path = "Günlük_Adım_Sayısı_Updated_Fixed.xml"  # The file path to edit
@@ -77,7 +77,7 @@ with open(output_path, "w", encoding="utf-8") as file:
     file.write(xml_content)
 print(f"XML file successfully edited and saved: {output_path}")
 
-With "Temizlik.3" I fixed the symbols like, ">" ve "<" and saved it into the file "Günlük_Adım_Sayısı_Final".
+**With "Temizlik.3" I fixed the symbols like, ">" ve "<" and saved it into the file "Günlük_Adım_Sayısı_Final".
 
 file_path = "Günlük_Adım_Sayısı_Cleaned.xml"  # Original XML file path
 output_path = "Günlük_Adım_Sayısı_Final.xml"  # Path to save corrected file
