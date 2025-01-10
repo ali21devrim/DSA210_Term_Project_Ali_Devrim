@@ -1,3 +1,6 @@
+#This was written to test the hypothesis that there is a relationship between social media usage and the number of steps taken per day. You can check out the "RESULTS" file
+#for the results.
+
 import pandas as pd
 from scipy.stats import spearmanr
 
